@@ -1,4 +1,4 @@
-import { ArrowRight, Mail } from 'lucide-react';
+import { ArrowRight, Mail, FileDown } from 'lucide-react';
 import { developerProfile, coreTechList } from '../data/portfolioData';
 import { TechIcon } from './TechIcons';
 
@@ -38,6 +38,17 @@ export const Hero = () => {
           >
             <span>View Projects</span>
             <ArrowRight className="w-3.5 h-3.5" />
+          </a>
+
+          <a
+            href={developerProfile.resumeUrl}
+            download="Munawar_Ali_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="apple-button-secondary inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-medium text-[#f5f5f7] hover:bg-white/[0.12] transition-all"
+          >
+            <FileDown className="w-3.5 h-3.5 text-[#86868b]" />
+            <span>Download Resume</span>
           </a>
 
           <a

@@ -54,10 +54,10 @@ export const developerProfile: DeveloperProfile = {
   bio: "Frontend Developer specializing in Angular, TypeScript, RxJS, and Angular Material for building high-performance enterprise SaaS applications, complex multi-step workflows, and REST API integrations, alongside practical MERN stack experience.",
   location: "India",
   status: "Available for new opportunities",
-  resumeUrl: "#resume",
+  resumeUrl: "/Munawar_Ali_Resume.pdf",
   socials: {
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
+    github: "https://github.com/munawaralimangat",
+    linkedin: "https://linkedin.com/in/munawar-ali-mangat",
     email: "munawaralimangat@gmail.com",
   },
   highlights: [
@@ -155,7 +155,7 @@ export const projectsData: Project[] = [
     description: "Developed a personal full-stack web application featuring user authentication, MongoDB schema design, Express.js backend services, and dynamic React components consuming RESTful API endpoints.",
     outcome: "Implemented end-to-end CRUD operations, token-based authentication, and responsive user interfaces.",
     tags: ["MongoDB", "Express.js", "React", "Node.js", "JavaScript", "REST APIs"],
-    githubUrl: "https://github.com",
+    githubUrl: "https://github.com/munawaralimangat",
     featured: false
   }
 ];

@@ -70,10 +70,9 @@ export const Navbar = () => {
         <div className="hidden sm:flex items-center">
           <a
             href={developerProfile.resumeUrl}
-            onClick={(e) => {
-              e.preventDefault();
-              alert(`Resume download for ${developerProfile.name}`);
-            }}
+            download="Munawar_Ali_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium text-[#f5f5f7] bg-white/[0.06] hover:bg-white/[0.12] border border-white/[0.08] transition-all"
           >
             <span>Resume</span>
@@ -107,12 +106,11 @@ export const Navbar = () => {
           ))}
           <a
             href={developerProfile.resumeUrl}
-            onClick={(e) => {
-              e.preventDefault();
-              setMobileMenuOpen(false);
-              alert(`Resume download for ${developerProfile.name}`);
-            }}
-            className="mt-2 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-medium text-black bg-white"
+            download="Munawar_Ali_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMobileMenuOpen(false)}
+            className="mt-2 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-medium text-black bg-white hover:bg-neutral-200 transition-colors"
           >
             <span>Download Resume</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
