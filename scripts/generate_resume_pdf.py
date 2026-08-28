@@ -140,7 +140,7 @@ def create_resume(output_path):
     # ================= PAGE 1 =================
     # Header Name
     story.append(Paragraph("MUNAWAR ALI M", title_style))
-    story.append(Paragraph("+918590410990 &nbsp;·&nbsp; munawaralimangat@gmail.com &nbsp;·&nbsp; Thenhipalam, Malappuram, Kerala, India", sub_info_style))
+    story.append(Paragraph("+918590410990 &nbsp;|&nbsp; munawaralimangat@gmail.com &nbsp;|&nbsp; Thenhipalam, Malappuram, Kerala, India", sub_info_style))
 
     # Social links row
     links_data = [[
@@ -232,7 +232,7 @@ def create_resume(output_path):
 
     # Project 1: Embase Prosuit — Examination & Academic Workflow
     p1_header = Table([
-        [Paragraph("<b>Embase Prosuit — Examination & Academic Workflow</b>", job_title_style), 
+        [Paragraph("<b>Embase Prosuit - Examination & Academic Workflow</b>", job_title_style), 
          Paragraph("Enterprise SaaS | Angular", job_date_style)]
     ], colWidths=[350, 180])
     p1_header.setStyle(TableStyle([('TOPPADDING', (0,0), (-1,-1), 0), ('BOTTOMPADDING', (0,0), (-1,-1), 0)]))
@@ -253,7 +253,7 @@ def create_resume(output_path):
 
     # Project 2: Embase Prosuit — Finance, Fee & Hostel Operations
     p2_header = Table([
-        [Paragraph("<b>Embase Prosuit — Finance & Operations Portal</b>", job_title_style), 
+        [Paragraph("<b>Embase Prosuit - Finance & Operations Portal</b>", job_title_style), 
          Paragraph("Enterprise SaaS | Angular", job_date_style)]
     ], colWidths=[350, 180])
     p2_header.setStyle(TableStyle([('TOPPADDING', (0,0), (-1,-1), 0), ('BOTTOMPADDING', (0,0), (-1,-1), 0)]))
@@ -274,7 +274,7 @@ def create_resume(output_path):
 
     # Project 3: BicycleRepublic
     p3_header = Table([
-        [Paragraph("<u>BicycleRepublic</u> — E-Commerce Web App", ParagraphStyle('P3', parent=job_title_style, textColor=colors.HexColor('#2563EB'))), 
+        [Paragraph("<u>BicycleRepublic</u> - E-Commerce Web App", ParagraphStyle('P3', parent=job_title_style, textColor=colors.HexColor('#2563EB'))), 
          Paragraph("GitHub-Repository: <a href='https://github.com/munawaralimangat'><font color='#2563EB'><u>Link</u></font></a>", job_date_style)]
     ], colWidths=[350, 180])
     p3_header.setStyle(TableStyle([('TOPPADDING', (0,0), (-1,-1), 0), ('BOTTOMPADDING', (0,0), (-1,-1), 0)]))
@@ -289,7 +289,7 @@ def create_resume(output_path):
 
     # Project 4: ASocialHub
     p4_header = Table([
-        [Paragraph("<u>ASocialHub</u> — Backend Social Application", ParagraphStyle('P4', parent=job_title_style, textColor=colors.HexColor('#2563EB'))), 
+        [Paragraph("<u>ASocialHub</u> - Backend Social Application", ParagraphStyle('P4', parent=job_title_style, textColor=colors.HexColor('#2563EB'))), 
          Paragraph("GitHub-Repository: <a href='https://github.com/munawaralimangat'><font color='#2563EB'><u>Link</u></font></a>", job_date_style)]
     ], colWidths=[350, 180])
     p4_header.setStyle(TableStyle([('TOPPADDING', (0,0), (-1,-1), 0), ('BOTTOMPADDING', (0,0), (-1,-1), 0)]))
