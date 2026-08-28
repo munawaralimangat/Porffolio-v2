@@ -20,8 +20,7 @@ export const Hero3DCanvas = () => {
       0.1,
       1000
     );
-    camera.position.set(0, 7, 24);
-    camera.lookAt(0, 4, 0);
+    camera.position.z = 45;
 
     const renderer = new THREE.WebGLRenderer({
       alpha: true,
@@ -32,39 +31,34 @@ export const Hero3DCanvas = () => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    // Group for perspective grid
-    const gridGroup = new THREE.Group();
-    scene.add(gridGroup);
+    // Particle Count & Buffer
+    const particleCount = 135;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    const originalPositions = new Float32Array(particleCount * 3);
+    const velocities = new Float32Array(particleCount * 3);
 
-    // 1. Perspective Plane Geometry (Large grid surface with undulating waves)
-    const gridWidth = 100;
-    const gridDepth = 100;
-    const segmentsX = 48;
-    const segmentsY = 48;
-    const geometry = new THREE.PlaneGeometry(gridWidth, gridDepth, segmentsX, segmentsY);
-    geometry.rotateX(-Math.PI / 2);
-    geometry.translate(0, -6, -20);
+    for (let i = 0; i < particleCount; i++) {
+      const x = (Math.random() - 0.5) * 80;
+      const y = (Math.random() - 0.5) * 50;
+      const z = (Math.random() - 0.5) * 40;
 
-    const count = geometry.attributes.position.count;
-    const initialY = new Float32Array(count);
-    const pos = geometry.attributes.position.array as Float32Array;
+      positions[i * 3] = x;
+      positions[i * 3 + 1] = y;
+      positions[i * 3 + 2] = z;
 
-    for (let i = 0; i < count; i++) {
-      initialY[i] = pos[i * 3 + 1];
+      originalPositions[i * 3] = x;
+      originalPositions[i * 3 + 1] = y;
+      originalPositions[i * 3 + 2] = z;
+
+      velocities[i * 3] = (Math.random() - 0.5) * 0.02;
+      velocities[i * 3 + 1] = (Math.random() - 0.5) * 0.02;
+      velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.02;
     }
 
-    // 2. Wireframe Grid Material
-    const gridMaterial = new THREE.MeshBasicMaterial({
-      wireframe: true,
-      color: themeRef.current === 'dark' ? new THREE.Color(0x34d399) : new THREE.Color(0x059669),
-      transparent: true,
-      opacity: themeRef.current === 'dark' ? 0.38 : 0.32,
-    });
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-    const gridMesh = new THREE.Mesh(geometry, gridMaterial);
-    gridGroup.add(gridMesh);
-
-    // 3. Glowing Intersecting Grid Nodes (Points)
+    // Particle Texture Generation (Rich Emerald Green circular sprite)
     const createCircleTexture = () => {
       const canvas = document.createElement('canvas');
       canvas.width = 64;
@@ -72,27 +66,45 @@ export const Hero3DCanvas = () => {
       const ctx = canvas.getContext('2d');
       if (ctx) {
         const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-        gradient.addColorStop(0, 'rgba(16, 185, 129, 1)');
-        gradient.addColorStop(0.4, 'rgba(52, 211, 153, 0.8)');
-        gradient.addColorStop(0.8, 'rgba(52, 211, 153, 0.15)');
+        gradient.addColorStop(0, 'rgba(16, 185, 129, 1)');      // Pure Emerald (#10b981)
+        gradient.addColorStop(0.35, 'rgba(52, 211, 153, 0.85)'); // Mint Emerald (#34d399)
+        gradient.addColorStop(0.75, 'rgba(52, 211, 153, 0.2)');
         gradient.addColorStop(1, 'rgba(52, 211, 153, 0)');
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, 64, 64);
       }
-      return new THREE.CanvasTexture(canvas);
+      const texture = new THREE.CanvasTexture(canvas);
+      return texture;
     };
 
-    const pointsMaterial = new THREE.PointsMaterial({
-      size: 1.2,
+    const particleMaterial = new THREE.PointsMaterial({
+      size: 2.2,
       map: createCircleTexture(),
       transparent: true,
-      opacity: themeRef.current === 'dark' ? 0.65 : 0.5,
+      opacity: 0.85,
       color: new THREE.Color(0xffffff),
+      blending: THREE.NormalBlending,
       depthWrite: false,
     });
 
-    const pointsMesh = new THREE.Points(geometry, pointsMaterial);
-    gridGroup.add(pointsMesh);
+    const particles = new THREE.Points(geometry, particleMaterial);
+    scene.add(particles);
+
+    // Subtle Interconnecting Constellation Lines in Emerald Green
+    const linesMaterial = new THREE.LineBasicMaterial({
+      transparent: true,
+      opacity: 0.14,
+      color: new THREE.Color(0x10b981),
+      blending: THREE.NormalBlending,
+    });
+
+    const linesGeometry = new THREE.BufferGeometry();
+    const maxLineSegments = (particleCount * (particleCount - 1)) / 2;
+    const linePositions = new Float32Array(maxLineSegments * 6);
+    linesGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+
+    const lineMesh = new THREE.LineSegments(linesGeometry, linesMaterial);
+    scene.add(lineMesh);
 
     // Mouse Tracking for Parallax
     let mouseX = 0;
@@ -104,13 +116,13 @@ export const Hero3DCanvas = () => {
       const rect = container.getBoundingClientRect();
       const x = event.clientX - rect.left;
       const y = event.clientY - rect.top;
-      targetMouseX = (x / container.clientWidth - 0.5) * 5;
-      targetMouseY = (y / container.clientHeight - 0.5) * 3;
+      targetMouseX = (x / container.clientWidth - 0.5) * 6;
+      targetMouseY = (y / container.clientHeight - 0.5) * 6;
     };
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
-    // Handle Window Resize
+    // Handle Resize
     const handleResize = () => {
       if (!container) return;
       camera.aspect = container.clientWidth / container.clientHeight;
@@ -145,30 +157,50 @@ export const Hero3DCanvas = () => {
       mouseX += (targetMouseX - mouseX) * 0.05;
       mouseY += (targetMouseY - mouseY) * 0.05;
 
-      // Parallax Tilt
-      gridGroup.rotation.y = mouseX * 0.08;
-      gridGroup.rotation.z = -mouseX * 0.04;
-      camera.position.y = 7 - mouseY * 1.2;
+      particles.rotation.y = elapsedTime * 0.03 + mouseX * 0.08;
+      particles.rotation.x = Math.sin(elapsedTime * 0.02) * 0.1 - mouseY * 0.08;
+      lineMesh.rotation.y = particles.rotation.y;
+      lineMesh.rotation.x = particles.rotation.x;
 
-      // Dynamic forward wave flow
-      const positions = geometry.attributes.position.array as Float32Array;
-      for (let i = 0; i < count; i++) {
-        const u = positions[i * 3];     // X
-        const v = positions[i * 3 + 2]; // Z
+      // Update Particle Positions gently
+      const pos = geometry.attributes.position.array as Float32Array;
+      let lineIndex = 0;
+      const connectionDistance = 14;
 
-        // Multi-frequency wave calculation flowing towards viewer
-        positions[i * 3 + 1] =
-          initialY[i] +
-          Math.sin(u * 0.15 + elapsedTime * 1.2) * 1.2 +
-          Math.cos(v * 0.12 - elapsedTime * 1.4) * 1.4;
+      for (let i = 0; i < particleCount; i++) {
+        const i3 = i * 3;
+        pos[i3] += velocities[i3] + Math.sin(elapsedTime + originalPositions[i3]) * 0.008;
+        pos[i3 + 1] += velocities[i3 + 1] + Math.cos(elapsedTime + originalPositions[i3 + 1]) * 0.008;
+        pos[i3 + 2] += velocities[i3 + 2];
+
+        // Boundary wrap
+        if (pos[i3] > 40) pos[i3] = -40;
+        if (pos[i3] < -40) pos[i3] = 40;
+        if (pos[i3 + 1] > 25) pos[i3 + 1] = -25;
+        if (pos[i3 + 1] < -25) pos[i3 + 1] = 25;
+
+        // Calculate line connections
+        for (let j = i + 1; j < particleCount; j++) {
+          const j3 = j * 3;
+          const dx = pos[i3] - pos[j3];
+          const dy = pos[i3 + 1] - pos[j3 + 1];
+          const dz = pos[i3 + 2] - pos[j3 + 2];
+          const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+          if (dist < connectionDistance) {
+            linePositions[lineIndex++] = pos[i3];
+            linePositions[lineIndex++] = pos[i3 + 1];
+            linePositions[lineIndex++] = pos[i3 + 2];
+            linePositions[lineIndex++] = pos[j3];
+            linePositions[lineIndex++] = pos[j3 + 1];
+            linePositions[lineIndex++] = pos[j3 + 2];
+          }
+        }
       }
-      geometry.attributes.position.needsUpdate = true;
 
-      // Dynamic theme sync
-      const isDark = themeRef.current === 'dark';
-      gridMaterial.color.set(isDark ? 0x34d399 : 0x059669);
-      gridMaterial.opacity = isDark ? 0.38 : 0.32;
-      pointsMaterial.opacity = isDark ? 0.65 : 0.5;
+      geometry.attributes.position.needsUpdate = true;
+      linesGeometry.setDrawRange(0, lineIndex / 3);
+      linesGeometry.attributes.position.needsUpdate = true;
 
       renderer.render(scene, camera);
     };
@@ -186,8 +218,9 @@ export const Hero3DCanvas = () => {
       }
 
       geometry.dispose();
-      gridMaterial.dispose();
-      pointsMaterial.dispose();
+      particleMaterial.dispose();
+      linesGeometry.dispose();
+      linesMaterial.dispose();
       renderer.dispose();
     };
   }, []);
@@ -196,7 +229,7 @@ export const Hero3DCanvas = () => {
     <div
       ref={containerRef}
       aria-hidden="true"
-      className="absolute inset-0 pointer-events-none z-0 overflow-hidden opacity-80"
+      className="absolute inset-0 pointer-events-none z-0 overflow-hidden"
     />
   );
 };
