@@ -1,18 +1,14 @@
 import { ArrowRight, Mail, FileDown } from 'lucide-react';
 import { developerProfile, coreTechList } from '../data/portfolioData';
 import { TechIcon } from './TechIcons';
-import { Hero3DCanvas } from './Hero3DCanvas';
 
 export const Hero = () => {
   return (
     <section id="about" className="relative pt-36 pb-20 md:pt-48 md:pb-28 overflow-hidden">
 
-      {/* Interactive Three.js 3D Particle Constellation */}
-      <Hero3DCanvas />
-
-      {/* Subtle Apple-style radial illumination */}
+      {/* Minimal Apple-grade breathing ambient illumination */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-full blur-3xl pointer-events-none opacity-80"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[550px] rounded-full blur-3xl pointer-events-none opacity-85 animate-aura-breathe"
         style={{ background: 'var(--glow-gradient)' }}
       />
 
@@ -24,11 +20,13 @@ export const Hero = () => {
           <span className="text-xs text-[var(--text-secondary)] tracking-wide">{developerProfile.status}</span>
         </div>
 
-        {/* Apple-grade Headline */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-[var(--text-primary)] leading-[1.08] mb-6">
-          Full-Stack Developer <br className="hidden sm:inline" />
-          <span className="whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-black via-zinc-700 to-zinc-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-400">
-            Angular & Node.js.
+        {/* Minimal Animated Headline with Multi-Color Hover Spectrum */}
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[var(--text-primary)] leading-[1.12] mb-6 max-w-4xl mx-auto group cursor-default select-none">
+          <span className="transition-all duration-300 group-hover:opacity-90">
+            Full-Stack Developer
+          </span> <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-black via-zinc-600 to-black dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-400 animate-text-shimmer spectrum-hover inline-block">
+            Building High-Performance Enterprise SaaS Applications.
           </span>
         </h1>
 

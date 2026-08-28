@@ -160,3 +160,58 @@ html.light {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-primary);
 }
+
+/* Minimal Modern Text Shimmer & Ambient Animations */
+@keyframes textShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-text-shimmer {
+  background-size: 220% auto;
+  animation: textShimmer 7s ease-in-out infinite;
+}
+
+@keyframes auraBreathe {
+  0%, 100% {
+    transform: translate(-50%, -10%) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-50%, -5%) scale(1.08);
+    opacity: 0.95;
+  }
+}
+
+.animate-aura-breathe {
+  animation: auraBreathe 9s ease-in-out infinite;
+}
+
+/* Multi-Color Iridescent Hover Spectrum */
+.spectrum-hover {
+  background-size: 220% auto;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.spectrum-hover:hover,
+.group:hover .spectrum-hover {
+  background-image: linear-gradient(
+    135deg,
+    #10b981 0%,
+    #06b6d4 22%,
+    #6366f1 45%,
+    #d946ef 68%,
+    #f59e0b 90%,
+    #10b981 100%
+  ) !important;
+  background-size: 300% auto;
+  animation: textShimmer 3.5s linear infinite;
+  filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.25));
+}

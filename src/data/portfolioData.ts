@@ -47,11 +47,11 @@ export interface DeveloperProfile {
 
 export const developerProfile: DeveloperProfile = {
   name: "Munawar Ali Mangat",
-  title: "Angular Frontend Developer",
-  role: "Frontend Developer",
+  title: "Full-Stack Developer",
+  role: "Full-Stack Developer",
   company: "Enterprise SaaS",
   product: "Embase Prosuit",
-  bio: "Frontend Developer specializing in Angular, TypeScript, RxJS, and Angular Material for building high-performance enterprise SaaS applications, complex multi-step workflows, and REST API integrations, alongside practical MERN stack experience.",
+  bio: "I build scalable web apps, complex workflows, and robust REST APIs using Angular, React, and Node.js.",
   location: "India",
   status: "Available for new opportunities",
   resumeUrl: "/Munawar_Ali_Resume.pdf",
@@ -61,10 +61,10 @@ export const developerProfile: DeveloperProfile = {
     email: "munawaralimangat@gmail.com",
   },
   highlights: [
-    { label: "Core Role", value: "Angular Developer" },
+    { label: "Core Role", value: "Full-Stack Developer" },
     { label: "Specialization", value: "Enterprise SaaS" },
-    { label: "State & UI", value: "RxJS & Material" },
-    { label: "Secondary Stack", value: "MERN Stack" },
+    { label: "Frontend", value: "Angular & React" },
+    { label: "Backend", value: "Node.js & MongoDB" },
   ]
 };
 
@@ -94,10 +94,10 @@ export const coreTechList: SkillItem[] = [
   { name: "Git", iconKey: "git", category: "Tools" },
   { name: "GitHub", iconKey: "github", category: "Tools" },
   { name: "Postman", iconKey: "postman", category: "Tools" },
-  //  { name: "VS Code", iconKey: "vscode", category: "Tools" },
-  // { name: "Vite", iconKey: "vite", category: "Tools" },
+  { name: "VS Code", iconKey: "vscode", category: "Tools" },
+  { name: "Vite", iconKey: "vite", category: "Tools" },
   { name: "npm", iconKey: "npm", category: "Tools" },
-  // { name: "Netlify", iconKey: "netlify", category: "Tools" },
+  { name: "Netlify", iconKey: "netlify", category: "Tools" },
 ];
 
 export const aiAssistedTools: AiAssistantTool[] = [

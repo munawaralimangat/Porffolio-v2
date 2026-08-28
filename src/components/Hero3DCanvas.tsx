@@ -58,7 +58,7 @@ export const Hero3DCanvas = () => {
 
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-    // Particle Texture Generation (Rich Emerald Green circular sprite)
+    // Particle Texture Generation (Vibrant Warm Yellow / Amber circular sprite)
     const createCircleTexture = () => {
       const canvas = document.createElement('canvas');
       canvas.width = 64;
@@ -66,10 +66,10 @@ export const Hero3DCanvas = () => {
       const ctx = canvas.getContext('2d');
       if (ctx) {
         const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-        gradient.addColorStop(0, 'rgba(16, 185, 129, 1)');      // Pure Emerald (#10b981)
-        gradient.addColorStop(0.35, 'rgba(52, 211, 153, 0.85)'); // Mint Emerald (#34d399)
-        gradient.addColorStop(0.75, 'rgba(52, 211, 153, 0.2)');
-        gradient.addColorStop(1, 'rgba(52, 211, 153, 0)');
+        gradient.addColorStop(0, 'rgba(245, 158, 11, 1)');       // Rich Amber Yellow (#f59e0b)
+        gradient.addColorStop(0.35, 'rgba(251, 191, 36, 0.85)'); // Bright Golden Yellow (#fbbf24)
+        gradient.addColorStop(0.75, 'rgba(251, 191, 36, 0.2)');
+        gradient.addColorStop(1, 'rgba(251, 191, 36, 0)');
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, 64, 64);
       }
@@ -90,11 +90,11 @@ export const Hero3DCanvas = () => {
     const particles = new THREE.Points(geometry, particleMaterial);
     scene.add(particles);
 
-    // Subtle Interconnecting Constellation Lines in Emerald Green
+    // Subtle Interconnecting Constellation Lines in Golden Yellow
     const linesMaterial = new THREE.LineBasicMaterial({
       transparent: true,
-      opacity: 0.14,
-      color: new THREE.Color(0x10b981),
+      opacity: 0.16,
+      color: new THREE.Color(0xf59e0b),
       blending: THREE.NormalBlending,
     });
 
