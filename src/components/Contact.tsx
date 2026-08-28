@@ -17,7 +17,6 @@ export const Contact = () => {
     setErrorMessage('');
 
     try {
-      // Send directly via Web3Forms API or fallback gracefully
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
@@ -25,8 +24,7 @@ export const Contact = () => {
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          // Default public access key or user recipient
-          access_key: '5d1ba3ea-4062-4e3f-a702-ce1d838edf11', // Visitors can submit; fallback handles mailto automatically
+          access_key: '5d1ba3ea-4062-4e3f-a702-ce1d838edf11',
           name: formData.name,
           email: formData.email,
           message: formData.message,
@@ -40,19 +38,15 @@ export const Contact = () => {
       if (response.status === 200 && result.success) {
         setStatus('success');
       } else {
-        // If access key is pending or network issue, fallback to mailto trigger and display success/fallback
         const mailtoUrl = `mailto:${developerProfile.socials.email}?subject=${encodeURIComponent(
           `Portfolio Contact from ${formData.name}`
         )}&body=${encodeURIComponent(
           `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
         )}`;
-
-        // Open user's default email client as seamless reliable delivery
         window.location.href = mailtoUrl;
         setStatus('success');
       }
     } catch {
-      // Seamless fallback to mailto if offline
       const mailtoUrl = `mailto:${developerProfile.socials.email}?subject=${encodeURIComponent(
         `Portfolio Contact from ${formData.name}`
       )}&body=${encodeURIComponent(
@@ -76,18 +70,18 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 relative z-10 border-t border-white/[0.06]">
+    <section id="contact" className="py-24 md:py-32 relative z-10 border-t border-[var(--border-color)]">
       <div className="max-w-4xl mx-auto px-6">
 
         {/* Header */}
         <div className="text-center max-w-xl mx-auto mb-16">
-          <span className="text-xs uppercase tracking-widest text-[#86868b] font-medium block mb-2">
+          <span className="text-xs uppercase tracking-widest text-[var(--text-secondary)] font-medium block mb-2">
             Connect
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] mb-4">
             Get in Touch
           </h2>
-          <p className="text-sm sm:text-base text-[#86868b] font-normal leading-relaxed">
+          <p className="text-sm sm:text-base text-[var(--text-secondary)] font-normal leading-relaxed">
             Have a project opportunity, architecture inquiry, or want to connect? Send a direct message below.
           </p>
         </div>
@@ -100,10 +94,10 @@ export const Contact = () => {
             {/* Email Box */}
             <div className="apple-card rounded-3xl p-6 space-y-4">
               <div>
-                <span className="text-xs text-[#86868b] uppercase tracking-wider block font-medium mb-1">
+                <span className="text-xs text-[var(--text-secondary)] uppercase tracking-wider block font-medium mb-1">
                   Direct Email
                 </span>
-                <p className="text-sm text-[#f5f5f7] font-medium truncate">
+                <p className="text-sm text-[var(--text-primary)] font-medium truncate">
                   {developerProfile.socials.email}
                 </p>
               </div>
@@ -111,16 +105,16 @@ export const Contact = () => {
               <div className="flex flex-col gap-2">
                 <button
                   onClick={handleCopyEmail}
-                  className="w-full apple-button-secondary py-2.5 px-4 rounded-2xl text-xs font-medium flex items-center justify-center gap-2"
+                  className="w-full apple-button-secondary py-2.5 px-4 rounded-2xl text-xs font-medium flex items-center justify-center gap-2 cursor-pointer"
                 >
                   {copied ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-emerald-400" />
+                      <Check className="w-3.5 h-3.5 text-emerald-500" />
                       <span>Email Copied to Clipboard</span>
                     </>
                   ) : (
                     <>
-                      <Copy className="w-3.5 h-3.5 text-[#86868b]" />
+                      <Copy className="w-3.5 h-3.5 text-[var(--text-secondary)]" />
                       <span>Copy Email Address</span>
                     </>
                   )}
@@ -128,7 +122,7 @@ export const Contact = () => {
 
                 <button
                   onClick={handleDirectMailto}
-                  className="w-full text-xs text-[#86868b] hover:text-[#f5f5f7] py-1.5 flex items-center justify-center gap-1 transition-colors"
+                  className="w-full text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] py-1.5 flex items-center justify-center gap-1 transition-colors cursor-pointer"
                 >
                   <span>Open in Mail Client</span>
                   <ArrowUpRight className="w-3 h-3" />
@@ -138,7 +132,7 @@ export const Contact = () => {
 
             {/* Social Links */}
             <div className="apple-card rounded-3xl p-6 space-y-3">
-              <span className="text-xs text-[#86868b] uppercase tracking-wider block font-medium mb-1">
+              <span className="text-xs text-[var(--text-secondary)] uppercase tracking-wider block font-medium mb-1">
                 Professional Channels
               </span>
 
@@ -147,26 +141,26 @@ export const Contact = () => {
                   href={developerProfile.socials.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center justify-between p-2.5 rounded-xl hover:bg-white/[0.04] transition-colors text-xs text-[#f5f5f7]"
+                  className="flex items-center justify-between p-2.5 rounded-xl hover:bg-[var(--pill-bg)] transition-colors text-xs text-[var(--text-primary)]"
                 >
                   <div className="flex items-center gap-2.5">
-                    <TechIcon name="github" className="w-4 h-4 text-[#86868b]" />
+                    <TechIcon name="github" className="w-4 h-4 text-[var(--text-secondary)]" />
                     <span>GitHub Profile</span>
                   </div>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[#86868b]" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[var(--text-secondary)]" />
                 </a>
 
                 <a
                   href={developerProfile.socials.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center justify-between p-2.5 rounded-xl hover:bg-white/[0.04] transition-colors text-xs text-[#f5f5f7]"
+                  className="flex items-center justify-between p-2.5 rounded-xl hover:bg-[var(--pill-bg)] transition-colors text-xs text-[var(--text-primary)]"
                 >
                   <div className="flex items-center gap-2.5">
-                    <Mail className="w-4 h-4 text-[#86868b]" />
+                    <Mail className="w-4 h-4 text-[var(--text-secondary)]" />
                     <span>LinkedIn Profile</span>
                   </div>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[#86868b]" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[var(--text-secondary)]" />
                 </a>
               </div>
             </div>
@@ -178,13 +172,13 @@ export const Contact = () => {
             <div className="apple-card rounded-3xl p-8">
               {status === 'success' ? (
                 <div className="py-10 text-center space-y-4 animate-in fade-in zoom-in-95 duration-200">
-                  <div className="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mx-auto text-emerald-400">
+                  <div className="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mx-auto text-emerald-500">
                     <Check className="w-6 h-6" />
                   </div>
                   <div className="space-y-1">
-                    <h3 className="text-xl font-semibold text-white">Message Dispatched!</h3>
-                    <p className="text-xs text-[#86868b] max-w-sm mx-auto leading-relaxed">
-                      Thank you for reaching out, {formData.name || 'there'}. I have received your transmission and will get back to you shortly at <span className="text-[#f5f5f7]">{formData.email}</span>.
+                    <h3 className="text-xl font-semibold text-[var(--text-primary)]">Message Dispatched!</h3>
+                    <p className="text-xs text-[var(--text-secondary)] max-w-sm mx-auto leading-relaxed">
+                      Thank you for reaching out, {formData.name || 'there'}. I have received your transmission and will get back to you shortly at <span className="text-[var(--text-primary)] font-medium">{formData.email}</span>.
                     </p>
                   </div>
                   <button
@@ -192,7 +186,7 @@ export const Contact = () => {
                       setStatus('idle');
                       setFormData({ name: '', email: '', message: '' });
                     }}
-                    className="apple-button-secondary px-5 py-2.5 rounded-full text-xs font-medium mt-2"
+                    className="apple-button-secondary px-5 py-2.5 rounded-full text-xs font-medium mt-2 cursor-pointer"
                   >
                     Send Another Message
                   </button>
@@ -200,15 +194,15 @@ export const Contact = () => {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   {status === 'error' && (
-                    <div className="p-3 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-300 text-xs flex items-center gap-2">
+                    <div className="p-3 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-500 text-xs flex items-center gap-2">
                       <AlertCircle className="w-4 h-4 shrink-0" />
                       <span>{errorMessage || 'Failed to dispatch message. You can also email directly.'}</span>
                     </div>
                   )}
 
                   <div>
-                    <label className="text-xs font-medium text-[#86868b] block mb-1.5">
-                      Your Name <span className="text-[#f5f5f7]">*</span>
+                    <label className="text-xs font-medium text-[var(--text-secondary)] block mb-1.5">
+                      Your Name <span className="text-[var(--text-primary)]">*</span>
                     </label>
                     <input
                       type="text"
@@ -216,13 +210,13 @@ export const Contact = () => {
                       placeholder="John Doe"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-2xl bg-white/[0.03] border border-white/[0.08] text-sm text-[#f5f5f7] placeholder-[#86868b]/50 focus:outline-none focus:border-white/20 transition-all"
+                      className="w-full px-4 py-3 rounded-2xl bg-[var(--input-bg)] border border-[var(--input-border)] text-sm text-[var(--text-primary)] placeholder-[var(--text-secondary)]/50 focus:outline-none focus:border-[var(--input-focus)] transition-all"
                     />
                   </div>
 
                   <div>
-                    <label className="text-xs font-medium text-[#86868b] block mb-1.5">
-                      Email Address <span className="text-[#f5f5f7]">*</span>
+                    <label className="text-xs font-medium text-[var(--text-secondary)] block mb-1.5">
+                      Email Address <span className="text-[var(--text-primary)]">*</span>
                     </label>
                     <input
                       type="email"
@@ -230,13 +224,13 @@ export const Contact = () => {
                       placeholder="john@company.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-2xl bg-white/[0.03] border border-white/[0.08] text-sm text-[#f5f5f7] placeholder-[#86868b]/50 focus:outline-none focus:border-white/20 transition-all"
+                      className="w-full px-4 py-3 rounded-2xl bg-[var(--input-bg)] border border-[var(--input-border)] text-sm text-[var(--text-primary)] placeholder-[var(--text-secondary)]/50 focus:outline-none focus:border-[var(--input-focus)] transition-all"
                     />
                   </div>
 
                   <div>
-                    <label className="text-xs font-medium text-[#86868b] block mb-1.5">
-                      Message <span className="text-[#f5f5f7]">*</span>
+                    <label className="text-xs font-medium text-[var(--text-secondary)] block mb-1.5">
+                      Message <span className="text-[var(--text-primary)]">*</span>
                     </label>
                     <textarea
                       rows={4}
@@ -244,18 +238,18 @@ export const Contact = () => {
                       placeholder="Describe your project, team opportunity, or inquiry..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3 rounded-2xl bg-white/[0.03] border border-white/[0.08] text-sm text-[#f5f5f7] placeholder-[#86868b]/50 focus:outline-none focus:border-white/20 transition-all resize-none"
+                      className="w-full px-4 py-3 rounded-2xl bg-[var(--input-bg)] border border-[var(--input-border)] text-sm text-[var(--text-primary)] placeholder-[var(--text-secondary)]/50 focus:outline-none focus:border-[var(--input-focus)] transition-all resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={status === 'loading'}
-                    className="w-full apple-button-primary py-3 rounded-2xl text-xs font-semibold tracking-tight mt-2 flex items-center justify-center gap-2 disabled:opacity-60"
+                    className="w-full apple-button-primary py-3 rounded-2xl text-xs font-semibold tracking-tight mt-2 flex items-center justify-center gap-2 disabled:opacity-60 cursor-pointer"
                   >
                     {status === 'loading' ? (
                       <>
-                        <Loader2 className="w-4 h-4 animate-spin text-black" />
+                        <Loader2 className="w-4 h-4 animate-spin text-[var(--btn-primary-text)]" />
                         <span>Dispatching Transmission...</span>
                       </>
                     ) : (

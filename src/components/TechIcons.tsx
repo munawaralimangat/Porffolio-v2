@@ -255,6 +255,73 @@ export const TechIcon: React.FC<TechIconProps> = ({ name, className = 'w-5 h-5' 
         </svg>
       );
 
+    // Postman
+    case 'postman':
+      return (
+        <svg className={className} viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="11" fill="#FF6C37" />
+          <path
+            d="M13.8 8.2c-.3-.4-.8-.6-1.3-.6-.8 0-1.5.6-1.5 1.5 0 .4.2.8.5 1.1l3.5 3.5c.3.3.7.5 1.1.5.8 0 1.5-.6 1.5-1.5 0-.4-.2-.8-.5-1.1L13.8 8.2zM9.5 11.2c-.4-.4-1-.4-1.4 0l-2.3 2.3c-.4.4-.4 1 0 1.4.4.4 1 .4 1.4 0l2.3-2.3c.4-.4.4-1 0-1.4z"
+            fill="#FFFFFF"
+          />
+        </svg>
+      );
+
+    // Vite
+    case 'vite':
+    case 'vitejs':
+      return (
+        <svg className={className} viewBox="0 0 24 24" fill="none">
+          <path
+            d="M21.7 3.5L12.9 20.3c-.4.7-1.4.7-1.8 0L2.3 3.5c-.4-.8.2-1.7 1.1-1.6l8.2 1.3c.3 0 .7 0 1-.1l8-1.2c.9-.1 1.5.8 1.1 1.6z"
+            fill="url(#vite-grad)"
+          />
+          <path
+            d="M14.5 2.5L7.8 13.5h3.8l-1.2 7.2L17.5 9h-3.9l.9-6.5z"
+            fill="#FFD62E"
+          />
+          <defs>
+            <linearGradient id="vite-grad" x1="2.3" y1="1.9" x2="21.7" y2="20.3" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#41D1FF" />
+              <stop offset="1" stopColor="#BD34FE" />
+            </linearGradient>
+          </defs>
+        </svg>
+      );
+
+    // npm
+    case 'npm':
+      return (
+        <svg className={className} viewBox="0 0 24 24" fill="none">
+          <rect width="24" height="24" rx="4" fill="#CB3837" />
+          <path d="M4 4h16v16H4V4zm3 3v10h5V9.5h2.5V17H17V7H7z" fill="#FFFFFF" />
+        </svg>
+      );
+
+    // Netlify
+    case 'netlify':
+      return (
+        <svg className={className} viewBox="0 0 24 24" fill="none">
+          <rect width="24" height="24" rx="4" fill="#00C7B7" />
+          <path
+            d="M12 4L6 10l6 6 6-6-6-6zm-4.2 8.8L5 15.6l7 4.4 7-4.4-2.8-2.8-4.2 4.2-4.2-4.2z"
+            fill="#FFFFFF"
+          />
+        </svg>
+      );
+
+    // JWT
+    case 'jwt':
+      return (
+        <svg className={className} viewBox="0 0 24 24" fill="none">
+          <rect width="24" height="24" rx="4" fill="#000000" />
+          <path
+            d="M6.5 7h2v6.5c0 1.1-.9 2-2 2s-2-.9-2-2h1.5c0 .3.2.5.5.5s.5-.2.5-.5V7zm5.5 0h1.5l1.5 6 1.5-6h1.5l-2.3 8.5h-1.5L12 7zm7.5 0H22v1.5h-1.5V15.5H19V8.5h-1.5V7h2z"
+            fill="#D63AFF"
+          />
+        </svg>
+      );
+
     // VS Code
     case 'vscode':
     case 'visualstudiocode':

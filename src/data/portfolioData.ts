@@ -1,7 +1,7 @@
 export interface Project {
   id: string;
   title: string;
-  category: 'Enterprise SaaS' | 'Frontend' | 'MERN Stack';
+  category: 'Enterprise SaaS' | 'Frontend' | 'Others';
   description: string;
   outcome: string;
   tags: string[];
@@ -90,10 +90,14 @@ export const coreTechList: SkillItem[] = [
   { name: "Express.js", iconKey: "express", category: "Backend & API" },
   { name: "REST APIs", iconKey: "restapis", category: "Backend & API" },
 
-  // Tools
+  // Tools & Platforms
   { name: "Git", iconKey: "git", category: "Tools" },
   { name: "GitHub", iconKey: "github", category: "Tools" },
-  { name: "VS Code", iconKey: "vscode", category: "Tools" },
+  { name: "Postman", iconKey: "postman", category: "Tools" },
+  //  { name: "VS Code", iconKey: "vscode", category: "Tools" },
+  // { name: "Vite", iconKey: "vite", category: "Tools" },
+  { name: "npm", iconKey: "npm", category: "Tools" },
+  // { name: "Netlify", iconKey: "netlify", category: "Tools" },
 ];
 
 export const aiAssistedTools: AiAssistantTool[] = [
@@ -151,7 +155,7 @@ export const projectsData: Project[] = [
   {
     id: "bicyclerepublic-ecommerce",
     title: "BicycleRepublic — E-Commerce Web App",
-    category: "MERN Stack",
+    category: "Others",
     description: "Developed a comprehensive e-commerce website specializing in bicycles. Implemented both admin and client sides using Node.js, Express, MongoDB, and JWT authentication with search/filtering capabilities.",
     outcome: "Built secure JWT authentication, MongoDB product catalog and inventory management, dynamic price/category filtering, and responsive Tailwind UI.",
     tags: ["Node.js", "Express.js", "MongoDB", "Tailwind CSS", "JavaScript", "REST APIs"],
@@ -161,10 +165,10 @@ export const projectsData: Project[] = [
   {
     id: "asocialhub-social-platform",
     title: "ASocialHub — Backend Social API Services",
-    category: "MERN Stack",
+    category: "Others",
     description: "Architected and developed the backend REST API services for a social networking platform. Built JWT-secured user authentication, post creation and interaction endpoints, and optimized MongoDB schema models.",
     outcome: "Implemented secure JWT authentication & authorization, scalable RESTful API controllers, robust middleware pipelines, and MongoDB database indexing.",
-    tags: ["Node.js", "Express.js", "MongoDB", "REST APIs", "JavaScript", "JWT"],
+    tags: ["Node.js", "Express.js", "MongoDB", "JWT", "REST APIs"],
     githubUrl: "https://github.com/munawaralimangat",
     featured: true
   }

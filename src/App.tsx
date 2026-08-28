@@ -1,3 +1,4 @@
+import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Projects } from './components/Projects';
@@ -8,22 +9,24 @@ import { Footer } from './components/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen bg-black text-[#f5f5f7] selection:bg-white selection:text-black font-sans">
-      {/* Floating Apple-style Pill Navbar */}
-      <Navbar />
+    <ThemeProvider>
+      <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] selection:bg-[var(--text-primary)] selection:text-[var(--bg-primary)] font-sans transition-colors duration-300">
+        {/* Floating Apple-style Pill Navbar */}
+        <Navbar />
 
-      {/* Main Structural Page Layout */}
-      <main>
-        <Hero />
-        <Projects />
-        <Skills />
-        <AiAssisted />
-        <Contact />
-      </main>
+        {/* Main Structural Page Layout */}
+        <main>
+          <Hero />
+          <Projects />
+          <Skills />
+          <AiAssisted />
+          <Contact />
+        </main>
 
-      {/* Minimal Footer */}
-      <Footer />
-    </div>
+        {/* Minimal Footer */}
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }
 

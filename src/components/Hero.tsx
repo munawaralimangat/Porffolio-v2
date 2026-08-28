@@ -1,43 +1,50 @@
 import { ArrowRight, Mail, FileDown } from 'lucide-react';
 import { developerProfile, coreTechList } from '../data/portfolioData';
 import { TechIcon } from './TechIcons';
+import { Hero3DCanvas } from './Hero3DCanvas';
 
 export const Hero = () => {
   return (
     <section id="about" className="relative pt-36 pb-20 md:pt-48 md:pb-28 overflow-hidden">
-      
+
+      {/* Interactive Three.js 3D Particle Constellation */}
+      <Hero3DCanvas />
+
       {/* Subtle Apple-style radial illumination */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-gradient-to-b from-white/[0.04] to-transparent rounded-full blur-3xl pointer-events-none" />
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-full blur-3xl pointer-events-none opacity-80"
+        style={{ background: 'var(--glow-gradient)' }}
+      />
 
       <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-        
+
         {/* Status Indicator */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md mb-8">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--pill-bg)] border border-[var(--pill-border)] backdrop-blur-md mb-8">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-xs text-[#86868b] tracking-wide">{developerProfile.status}</span>
+          <span className="text-xs text-[var(--text-secondary)] tracking-wide">{developerProfile.status}</span>
         </div>
 
         {/* Apple-grade Headline */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-[#f5f5f7] leading-[1.08] mb-6">
-          Angular Frontend Developer <br className="hidden sm:inline" />
-          <span className="whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-zinc-500">
-            & MERN Stack.
+        <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-[var(--text-primary)] leading-[1.08] mb-6">
+          Full-Stack Developer <br className="hidden sm:inline" />
+          <span className="whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-black via-zinc-700 to-zinc-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-400">
+            Angular & Node.js.
           </span>
         </h1>
 
         {/* Clean Bio */}
-        <p className="text-lg sm:text-xl text-[#86868b] font-normal max-w-2xl mx-auto leading-relaxed mb-10">
+        <p className="text-lg sm:text-xl text-[var(--text-secondary)] font-normal max-w-2xl mx-auto leading-relaxed mb-10">
           Hi, I'm {developerProfile.name}. {developerProfile.bio}
         </p>
 
         {/* Action Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-3.5 mb-16">
+        <div className="flex flex-wrap items-center justify-center gap-4 mb-16">
           <a
             href="#projects"
-            className="apple-button-primary inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold tracking-tight shadow-sm"
+            className="apple-button-primary inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full text-sm font-semibold tracking-tight shadow-md"
           >
             <span>View Projects</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <ArrowRight className="w-4 h-4" />
           </a>
 
           <a
@@ -45,45 +52,45 @@ export const Hero = () => {
             download="Munawar_Ali_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="apple-button-secondary inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-medium text-[#f5f5f7] hover:bg-white/[0.12] transition-all"
+            className="apple-button-secondary inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full text-sm font-medium hover:bg-[var(--btn-secondary-hover)] transition-all shadow-sm"
           >
-            <FileDown className="w-3.5 h-3.5 text-[#86868b]" />
+            <FileDown className="w-4 h-4 text-[var(--text-secondary)]" />
             <span>Download Resume</span>
           </a>
 
           <a
             href="#contact"
-            className="apple-button-secondary inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-medium text-[#f5f5f7]"
+            className="apple-button-secondary inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full text-sm font-medium shadow-sm"
           >
-            <Mail className="w-3.5 h-3.5 text-[#86868b]" />
+            <Mail className="w-4 h-4 text-[var(--text-secondary)]" />
             <span>Get in Touch</span>
           </a>
         </div>
 
         {/* Core Tech Stack Apple Pill Strip */}
-        <div className="pt-8 border-t border-white/[0.06]">
-          <p className="text-[11px] uppercase tracking-widest text-[#86868b] font-medium mb-4">
+        <div className="pt-8 border-t border-[var(--border-color)]">
+          <p className="text-[11px] uppercase tracking-widest text-[var(--text-secondary)] font-medium mb-4">
             Core Technologies
           </p>
           <div className="flex flex-wrap items-center justify-center gap-2 max-w-3xl mx-auto">
             {coreTechList.slice(0, 10).map((tech) => (
               <div
                 key={tech.name}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.08] hover:border-white/[0.14] transition-all"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--pill-bg)] border border-[var(--pill-border)] hover:bg-[var(--pill-hover)] transition-all"
               >
                 <TechIcon name={tech.iconKey} className="w-3.5 h-3.5" />
-                <span className="text-xs text-[#f5f5f7] font-medium">{tech.name}</span>
+                <span className="text-xs text-[var(--text-primary)] font-medium">{tech.name}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Quiet Key Metrics */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-16 pt-8 border-t border-white/[0.06] max-w-3xl mx-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-12 md:gap-16 mt-16 pt-10 border-t border-[var(--border-color)] max-w-4xl mx-auto">
           {developerProfile.highlights.map((item, idx) => (
-            <div key={idx} className="flex flex-col items-center">
-              <span className="whitespace-nowrap text-xl sm:text-2xl font-bold tracking-tight text-white">{item.value}</span>
-              <span className="text-xs text-[#86868b] mt-1">{item.label}</span>
+            <div key={idx} className="flex flex-col items-center justify-center text-center px-2">
+              <span className="whitespace-nowrap text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-primary)]">{item.value}</span>
+              <span className="text-xs text-[var(--text-secondary)] mt-1.5 font-medium">{item.label}</span>
             </div>
           ))}
         </div>
