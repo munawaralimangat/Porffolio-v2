@@ -149,13 +149,23 @@ export const projectsData: Project[] = [
     featured: true
   },
   {
-    id: "mern-fullstack-app",
-    title: "MERN Stack Web Application",
+    id: "bicyclerepublic-ecommerce",
+    title: "BicycleRepublic — E-Commerce Web App",
     category: "MERN Stack",
-    description: "Developed a personal full-stack web application featuring user authentication, MongoDB schema design, Express.js backend services, and dynamic React components consuming RESTful API endpoints.",
-    outcome: "Implemented end-to-end CRUD operations, token-based authentication, and responsive user interfaces.",
-    tags: ["MongoDB", "Express.js", "React", "Node.js", "JavaScript", "REST APIs"],
+    description: "Developed a comprehensive e-commerce website specializing in bicycles. Implemented both admin and client sides using Node.js, Express, MongoDB, and JWT authentication with search/filtering capabilities.",
+    outcome: "Built secure JWT authentication, MongoDB product catalog and inventory management, dynamic price/category filtering, and responsive Tailwind UI.",
+    tags: ["Node.js", "Express.js", "MongoDB", "Tailwind CSS", "JavaScript", "REST APIs"],
     githubUrl: "https://github.com/munawaralimangat",
-    featured: false
+    featured: true
+  },
+  {
+    id: "asocialhub-social-platform",
+    title: "ASocialHub — Backend Social API Services",
+    category: "MERN Stack",
+    description: "Architected and developed the backend REST API services for a social networking platform. Built JWT-secured user authentication, post creation and interaction endpoints, and optimized MongoDB schema models.",
+    outcome: "Implemented secure JWT authentication & authorization, scalable RESTful API controllers, robust middleware pipelines, and MongoDB database indexing.",
+    tags: ["Node.js", "Express.js", "MongoDB", "REST APIs", "JavaScript", "JWT"],
+    githubUrl: "https://github.com/munawaralimangat",
+    featured: true
   }
 ];

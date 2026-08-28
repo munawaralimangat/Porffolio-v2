@@ -145,7 +145,7 @@ def create_resume(output_path):
     # Social links row
     links_data = [[
         Paragraph('<a href="https://github.com/munawaralimangat"><font color="#2563EB"><u>GitHub</u></font></a>', ParagraphStyle('L', parent=links_style, alignment=0)),
-        Paragraph('<font color="#2563EB"><u>Portfolio</u></font>', ParagraphStyle('C', parent=links_style, alignment=1)),
+        Paragraph('<a href="https://munawar-portfolio-v2.netlify.app/"><font color="#2563EB"><u>Portfolio</u></font></a>', ParagraphStyle('C', parent=links_style, alignment=1)),
         Paragraph('<a href="https://linkedin.com/in/munawar-ali-mangat"><font color="#2563EB"><u>LinkedIn</u></font></a>', ParagraphStyle('R', parent=links_style, alignment=2))
     ]]
     t_links = Table(links_data, colWidths=[175, 180, 175])
@@ -168,9 +168,9 @@ def create_resume(output_path):
     # SKILLS AND EXPERTISE
     story.append(Paragraph("SKILLS AND EXPERTISE", section_heading))
     
-    col1 = """• ReactJs<br/>• MaterialUI<br/>• JavaScript<br/>• Redux and Redux Toolkit<br/>• Figma<br/>• HTML"""
-    col2 = """• Angular<br/>• Angular Material<br/>• TypeScript<br/>• NgRx<br/>• JWT<br/>• CSS and SCSS"""
-    col3 = """• NodeJs<br/>• MongoDB<br/>• AWS for cloud deployment<br/>• EC2, npm<br/>• RESTful APIs<br/>• TailwindCss"""
+    col1 = """<b>Frontend & State:</b><br/>• Angular & Angular Material<br/>• React.js & Material UI<br/>• TypeScript & JavaScript<br/>• RxJS & NgRx<br/>• Redux & Redux Toolkit<br/>• Tailwind CSS, CSS3, HTML5"""
+    col2 = """<b>Backend, DB & Cloud:</b><br/>• Node.js & Express.js<br/>• MongoDB<br/>• RESTful APIs Integration<br/>• JWT Authentication<br/>• AWS (EC2) Deployment<br/>• npm, Postman"""
+    col3 = """<b>AI & Developer Tools:</b><br/>• Claude Code (Anthropic)<br/>• OpenAI Codex & ChatGPT<br/>• Google Gemini<br/>• Git & GitHub<br/>• VS Code<br/>• Figma (UI/UX)"""
 
     skills_table = Table([
         [Paragraph(col1, skill_col_style), Paragraph(col2, skill_col_style), Paragraph(col3, skill_col_style)]
@@ -178,37 +178,36 @@ def create_resume(output_path):
     skills_table.setStyle(TableStyle([
         ('VALIGN', (0,0), (-1,-1), 'TOP'),
         ('TOPPADDING', (0,0), (-1,-1), 2),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 6),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 4),
     ]))
     story.append(skills_table)
-    story.append(HRFlowable(width="100%", thickness=0.75, color=colors.HexColor('#9CA3AF'), spaceBefore=4, spaceAfter=6))
+    story.append(HRFlowable(width="100%", thickness=0.75, color=colors.HexColor('#9CA3AF'), spaceBefore=3, spaceAfter=5))
 
     # PROFESSIONAL EXPERIENCE
     story.append(Paragraph("PROFESSIONAL EXPERIENCE", section_heading))
 
-    # Job 1
+    # Job 1: Emdot Mincetech
     j1_header = Table([
-        [Paragraph("Junior Software Developer", job_title_style), Paragraph("2024 - Present", job_date_style)]
+        [Paragraph("Software Developer", job_title_style), Paragraph("2024 - Present", job_date_style)]
     ], colWidths=[350, 180])
     j1_header.setStyle(TableStyle([('TOPPADDING', (0,0), (-1,-1), 0), ('BOTTOMPADDING', (0,0), (-1,-1), 0)]))
     story.append(j1_header)
     story.append(Paragraph("Emdot Mincetech | Calicut", company_style))
 
     j1_bullets = [
-        "Developing a College Management Application using Angular as part of a 5-member frontend team.",
-        "Collaborating with the backend team to integrate APIs and ensure smooth data flow.",
-        "Implementing responsive UI components and optimizing performance for a seamless user experience.",
-        "Writing clean, modular, and maintainable code following best practices in Angular development.",
-        "Debugging and fixing issues to enhance the application's stability and performance.",
-        "Working with state management techniques and integrating third-party libraries to improve functionality.",
-        "Participating in code reviews, daily stand-ups, and sprint planning to ensure project progress and alignment with business goals."
+        "Developing core modules for Embase Prosuit (Enterprise College Management SaaS) using Angular, TypeScript, and RxJS.",
+        "Collaborating with the backend team to integrate RESTful APIs and ensure smooth, reactive data flow.",
+        "Implementing responsive UI components with Angular Material and Tailwind CSS for optimized user experience.",
+        "Writing clean, modular, and maintainable code following best practices in Angular enterprise development.",
+        "Debugging and resolving complex state management, template type-checking, and performance bottlenecks.",
+        "Participating in code reviews, daily stand-ups, and sprint planning to ensure timely milestone delivery."
     ]
     for b in j1_bullets:
         story.append(Paragraph(f"• &nbsp; {b}", bullet_style))
 
-    story.append(Spacer(1, 6))
+    story.append(Spacer(1, 5))
 
-    # Job 2
+    # Job 2: Selfstack
     j2_header = Table([
         [Paragraph("Fullstack Developer", job_title_style), Paragraph("2023 - 2024", job_date_style)]
     ], colWidths=[350, 180])
@@ -217,10 +216,10 @@ def create_resume(output_path):
     story.append(Paragraph("Selfstack | Calicut", company_style))
 
     j2_bullets = [
-        "Developed proficiency in the MERN (MongoDB, Express.js, React.js, Node.js) stack for full-stack web development.",
-        "Completed multiple mini projects to reinforce learning and showcase skills in CRUD operations and complex web applications.",
-        "Led the development of an eCommerce website, overseeing user interface design, payment gateway integration, and product inventory management.",
-        "Enhanced problem-solving abilities and gained practical insights into the software development lifecycle through hands-on project work and collaboration."
+        "Developed proficiency across the MERN stack (MongoDB, Express.js, React.js, Node.js) for end-to-end web applications.",
+        "Built and deployed scalable full-stack projects featuring user authentication, database modeling, and RESTful APIs.",
+        "Led the development of full-featured web applications, managing UI design, payment integration, and inventory management.",
+        "Strengthened problem-solving capabilities and agile software development lifecycle methodologies."
     ]
     for b in j2_bullets:
         story.append(Paragraph(f"• &nbsp; {b}", bullet_style))
@@ -229,87 +228,91 @@ def create_resume(output_path):
     story.append(PageBreak())
 
     # PROJECTS Heading
-    story.append(Paragraph("PROJECTS", section_heading))
+    story.append(Paragraph("PROJECTS & ENTERPRISE WORK", section_heading))
 
-    # Project 1: BicycleRepublic
+    # Project 1: Embase Prosuit — Examination & Academic Workflow
     p1_header = Table([
-        [Paragraph("<u>BicycleRepublic</u>", ParagraphStyle('P1', parent=job_title_style, textColor=colors.HexColor('#2563EB'))), 
-         Paragraph("GitHub-Repository: <a href='https://github.com/munawaralimangat'><font color='#2563EB'><u>Link</u></font></a>", job_date_style)]
+        [Paragraph("<b>Embase Prosuit — Examination & Academic Workflow</b>", job_title_style), 
+         Paragraph("Enterprise SaaS | Angular", job_date_style)]
     ], colWidths=[350, 180])
     p1_header.setStyle(TableStyle([('TOPPADDING', (0,0), (-1,-1), 0), ('BOTTOMPADDING', (0,0), (-1,-1), 0)]))
     story.append(p1_header)
-    story.append(Paragraph("E-Commerce Application", company_style))
+    story.append(Paragraph("College Management SaaS Application (Emdot Mincetech)", company_style))
     story.append(Paragraph(
-        "Developed a comprehensive e-commerce website specializing in bicycles, featuring two distinct categories: Mountain bikes and Road bikes. Designed and implemented both the admin and client sides using Node.js, Express, MongoDB, and JWT for authentication. Employed EJS and Tailwind CSS for frontend development.",
+        "Engineered examination and academic management modules for higher education institutions. Implemented complex multi-step workflows with draft persistence, validation, status-based navigation, examination applications, and revaluation handling.",
         summary_style
     ))
-
     p1_bullets = [
-        "Implemented user authentication using JWT for secure access.",
-        "Utilized MongoDB for efficient data storage and retrieval.",
-        "Developed RESTful APIs with Express for seamless communication between client and server.",
-        "Integrated Chart.js for analytics on the admin side.",
-        "Admin functionalities include adding, updating, and deleting products, as well as managing categories and user blocking.",
-        "Implemented search functionality, filtering options by price and category, and sorting capabilities for users to efficiently find and navigate products."
+        "Built reactive forms with robust HttpClient API integrations, error boundaries, and strongly typed TypeScript models.",
+        "Implemented role-based permission views and seamless state management utilizing RxJS observables."
     ]
     for b in p1_bullets:
         story.append(Paragraph(f"• &nbsp; {b}", bullet_style))
 
-    story.append(Spacer(1, 6))
+    story.append(Spacer(1, 4))
 
-    # Project 2: ASocialHub
+    # Project 2: Embase Prosuit — Finance, Fee & Hostel Operations
     p2_header = Table([
-        [Paragraph("<u>ASocialHub</u>", ParagraphStyle('P2', parent=job_title_style, textColor=colors.HexColor('#2563EB'))), 
-         Paragraph("GitHub-Repository: <a href='https://github.com/munawaralimangat'><font color='#2563EB'><u>Link</u></font></a>", job_date_style)]
+        [Paragraph("<b>Embase Prosuit — Finance & Operations Portal</b>", job_title_style), 
+         Paragraph("Enterprise SaaS | Angular", job_date_style)]
     ], colWidths=[350, 180])
     p2_header.setStyle(TableStyle([('TOPPADDING', (0,0), (-1,-1), 0), ('BOTTOMPADDING', (0,0), (-1,-1), 0)]))
     story.append(p2_header)
-    story.append(Paragraph("Social Media Application", company_style))
+    story.append(Paragraph("Administrative Financials & Analytics Engine", company_style))
     story.append(Paragraph(
-        "Developed ASocialHub, a MERN stack-powered social app facilitating seamless user connections with secure JWT authentication. Leveraging an intuitive React front end and efficient MongoDB data storage, the platform prioritizes simplicity, fostering interactions through posts and engagement. Implemented secure JWT authentication for user login and authorization, ensuring robust security.",
+        "Built financial input interfaces, fee management workflows, and hostel mess calculation engines. Implemented advanced data tables featuring dynamic search, filtering, sorting, pagination, bulk actions, and structured report exports.",
         summary_style
     ))
-
     p2_bullets = [
-        "Leveraged React for an intuitive front end and MongoDB for efficient data storage.",
-        "Focused on simplicity, fostering user engagement through posts and interactions."
+        "Integrated ApexCharts visual metrics reporting for administrative insight dashboards.",
+        "Streamlined high-volume operational data entry for administrative staff with high responsiveness."
     ]
     for b in p2_bullets:
         story.append(Paragraph(f"• &nbsp; {b}", bullet_style))
 
     story.append(Spacer(1, 4))
-    story.append(HRFlowable(width="100%", thickness=0.75, color=colors.HexColor('#9CA3AF'), spaceBefore=4, spaceAfter=6))
 
-    # MINI PROJECTS
-    story.append(Paragraph("MINI PROJECTS", section_heading))
+    # Project 3: BicycleRepublic
+    p3_header = Table([
+        [Paragraph("<u>BicycleRepublic</u> — E-Commerce Web App", ParagraphStyle('P3', parent=job_title_style, textColor=colors.HexColor('#2563EB'))), 
+         Paragraph("GitHub-Repository: <a href='https://github.com/munawaralimangat'><font color='#2563EB'><u>Link</u></font></a>", job_date_style)]
+    ], colWidths=[350, 180])
+    p3_header.setStyle(TableStyle([('TOPPADDING', (0,0), (-1,-1), 0), ('BOTTOMPADDING', (0,0), (-1,-1), 0)]))
+    story.append(p3_header)
+    story.append(Paragraph("Fullstack E-Commerce Application | Node.js, Express, MongoDB, Tailwind CSS", company_style))
+    story.append(Paragraph(
+        "Developed a comprehensive e-commerce website specializing in bicycles. Implemented both admin and client sides using Node.js, Express, MongoDB, and JWT authentication with search/filtering capabilities.",
+        summary_style
+    ))
 
-    mini_data = [
-        [Paragraph("<b>CartApp</b><br/><font color='#4B5563'>Cart Application-Angular</font>", skill_col_style),
-         Paragraph("GitHub-Repository: <a href='https://github.com/munawaralimangat'><font color='#2563EB'><u>Link</u></font></a>", job_date_style)],
-        [Paragraph("<b>QRCode-Generator-App</b><br/><font color='#4B5563'>QR code scanner Application-React</font>", skill_col_style),
-         Paragraph("GitHub-Repository: <a href='https://github.com/munawaralimangat'><font color='#2563EB'><u>Link</u></font></a>", job_date_style)],
-        [Paragraph("<b>Calender App</b><br/><font color='#4B5563'>Calender Application</font>", skill_col_style),
-         Paragraph("GitHub-Repository: <a href='https://github.com/munawaralimangat'><font color='#2563EB'><u>Link</u></font></a>", job_date_style)],
-    ]
-    t_mini = Table(mini_data, colWidths=[350, 180])
-    t_mini.setStyle(TableStyle([
-        ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
-        ('TOPPADDING', (0,0), (-1,-1), 2),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 2),
-    ]))
-    story.append(t_mini)
-    story.append(HRFlowable(width="100%", thickness=0.75, color=colors.HexColor('#9CA3AF'), spaceBefore=6, spaceAfter=6))
+    story.append(Spacer(1, 4))
+
+    # Project 4: ASocialHub
+    p4_header = Table([
+        [Paragraph("<u>ASocialHub</u> — Backend Social Application", ParagraphStyle('P4', parent=job_title_style, textColor=colors.HexColor('#2563EB'))), 
+         Paragraph("GitHub-Repository: <a href='https://github.com/munawaralimangat'><font color='#2563EB'><u>Link</u></font></a>", job_date_style)]
+    ], colWidths=[350, 180])
+    p4_header.setStyle(TableStyle([('TOPPADDING', (0,0), (-1,-1), 0), ('BOTTOMPADDING', (0,0), (-1,-1), 0)]))
+    story.append(p4_header)
+    story.append(Paragraph("Backend REST API & Services | Node.js, Express, MongoDB, JWT", company_style))
+    story.append(Paragraph(
+        "Architected and developed the backend REST API services for a social networking platform. Built JWT-secured user authentication and authorization, post creation and interaction endpoints, and optimized MongoDB schema models.",
+        summary_style
+    ))
+
+    story.append(Spacer(1, 3))
+    story.append(HRFlowable(width="100%", thickness=0.75, color=colors.HexColor('#9CA3AF'), spaceBefore=3, spaceAfter=5))
 
     # EDUCATION
     story.append(Paragraph("EDUCATION", section_heading))
-    story.append(Paragraph("<b>Bachelor of commerce</b>", job_title_style))
-    story.append(Paragraph("Calicut University, Thenhipalam", company_style))
-    story.append(HRFlowable(width="100%", thickness=0.75, color=colors.HexColor('#9CA3AF'), spaceBefore=6, spaceAfter=6))
+    story.append(Paragraph("<b>Bachelor of Commerce (B.Com)</b>", job_title_style))
+    story.append(Paragraph("Calicut University, Thenhipalam, Kerala", company_style))
+    story.append(HRFlowable(width="100%", thickness=0.75, color=colors.HexColor('#9CA3AF'), spaceBefore=4, spaceAfter=5))
 
     # Declaration
     story.append(Paragraph("<b>Declaration</b>", job_title_style))
     story.append(Paragraph("I hereby declare that the above furnished details are true to the best of my knowledge and belief.", summary_style))
-    story.append(Spacer(1, 10))
+    story.append(Spacer(1, 4))
     story.append(Paragraph("<b>MUNAWAR ALI M</b>", ParagraphStyle('Sign', parent=job_title_style, alignment=2)))
 
     doc.build(story)
