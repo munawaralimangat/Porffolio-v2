@@ -47,9 +47,9 @@ export const Skills = () => {
         {/* Focus Highlight Card */}
         <div className="mt-12 p-6 sm:p-8 rounded-3xl apple-card flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
           <div className="space-y-1">
-            <h4 className="text-sm font-semibold text-[var(--text-primary)] whitespace-nowrap">Angular Frontend Developer (with MERN Background)</h4>
+            <h4 className="text-sm font-semibold text-[var(--text-primary)] whitespace-nowrap">Modern Websites & Enterprise Applications</h4>
             <p className="text-xs text-[var(--text-secondary)] max-w-xl leading-relaxed">
-              Specializing in Angular enterprise applications, RxJS reactive state, Angular Material components, and REST API integrations for modern SaaS platforms, with a practical full-stack foundation in the MERN stack.
+              Specializing in building modern responsive websites, luxury e-commerce experiences (like Black Leaves), and scalable Enterprise SaaS architectures using React, Angular, TypeScript, and Node.js.
             </p>
           </div>
           <a

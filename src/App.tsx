@@ -10,7 +10,7 @@ import { Footer } from './components/Footer';
 function App() {
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] selection:bg-[var(--text-primary)] selection:text-[var(--bg-primary)] font-sans transition-colors duration-300">
+      <div className="min-h-screen text-[var(--text-primary)] selection:bg-[var(--text-primary)] selection:text-[var(--bg-primary)] font-sans transition-colors duration-300">
         {/* Floating Apple-style Pill Navbar */}
         <Navbar />
 

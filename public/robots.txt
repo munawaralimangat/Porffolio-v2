@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://munawaralimangat.netlify.app/sitemap.xml

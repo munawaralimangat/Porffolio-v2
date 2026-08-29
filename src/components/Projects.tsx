@@ -7,7 +7,7 @@ import { TechIcon } from './TechIcons';
 export const Projects = () => {
   const [activeCategory, setActiveCategory] = useState<string>('All');
 
-  const categories = ['All', 'Enterprise SaaS', 'Others'];
+  const categories = ['All', 'Websites', 'Enterprise SaaS', 'Others'];
 
   const filteredProjects = activeCategory === 'All'
     ? projectsData

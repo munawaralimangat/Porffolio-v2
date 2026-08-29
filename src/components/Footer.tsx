@@ -25,6 +25,7 @@ export const Footer = () => {
 
         <button
           onClick={scrollToTop}
+          aria-label="Scroll to top"
           className="flex items-center gap-1 hover:text-[var(--text-primary)] transition-colors cursor-pointer"
         >
           <span>Top</span>

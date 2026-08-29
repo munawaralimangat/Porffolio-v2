@@ -1,7 +1,7 @@
 export interface Project {
   id: string;
   title: string;
-  category: 'Enterprise SaaS' | 'Frontend' | 'Others';
+  category: 'Enterprise SaaS' | 'Websites' | 'Frontend' | 'Others';
   description: string;
   outcome: string;
   tags: string[];
@@ -49,9 +49,9 @@ export const developerProfile: DeveloperProfile = {
   name: "Munawar Ali Mangat",
   title: "Full-Stack Developer",
   role: "Full-Stack Developer",
-  company: "Enterprise SaaS",
-  product: "Embase Prosuit",
-  bio: "I build scalable web apps, complex workflows, and robust REST APIs using Angular, React, and Node.js.",
+  company: "Enterprise SaaS & Web",
+  product: "Websites & Applications",
+  bio: "I build responsive modern websites, scalable web applications, and robust REST APIs using React, Angular, TypeScript, and Node.js.",
   location: "India",
   status: "Available for new opportunities",
   resumeUrl: "/Munawar_Ali_Resume.pdf",
@@ -62,8 +62,8 @@ export const developerProfile: DeveloperProfile = {
   },
   highlights: [
     { label: "Core Role", value: "Full-Stack Developer" },
-    { label: "Specialization", value: "Enterprise SaaS" },
-    { label: "Frontend", value: "Angular & React" },
+    { label: "Specialization", value: "Websites & SaaS" },
+    { label: "Frontend", value: "React & Angular" },
     { label: "Backend", value: "Node.js & MongoDB" },
   ]
 };
@@ -94,10 +94,7 @@ export const coreTechList: SkillItem[] = [
   { name: "Git", iconKey: "git", category: "Tools" },
   { name: "GitHub", iconKey: "github", category: "Tools" },
   { name: "Postman", iconKey: "postman", category: "Tools" },
-  { name: "VS Code", iconKey: "vscode", category: "Tools" },
-  { name: "Vite", iconKey: "vite", category: "Tools" },
   { name: "npm", iconKey: "npm", category: "Tools" },
-  { name: "Netlify", iconKey: "netlify", category: "Tools" },
 ];
 
 export const aiAssistedTools: AiAssistantTool[] = [
@@ -125,6 +122,17 @@ export const aiAssistedTools: AiAssistantTool[] = [
 ];
 
 export const projectsData: Project[] = [
+  {
+    id: "black-leaves-tea-platform",
+    title: "Black Leaves — Artisanal Tea & Wholesale Web Platform",
+    category: "Websites",
+    description: "A modern, responsive e-commerce and B2B web application built for an artisanal tea brand. Features dynamic product filtering, interactive brewing guides, custom wholesale inquiry flows, and a luxury brand storytelling experience.",
+    outcome: "Architected high-performance responsive UI with modular component hierarchy, custom brewing interactive state machines, and streamlined wholesale ordering UX.",
+    tags: ["React", "TypeScript", "Vite", "Modern CSS", "Responsive Design"],
+    githubUrl: "https://github.com/munawaralimangat/black-leaves",
+    liveUrl: "https://balck-leaves.netlify.app/",
+    featured: true
+  },
   {
     id: "embase-examination-workflow",
     title: "Embase Prosuit — Examination & Academic Workflow",
